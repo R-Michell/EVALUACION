@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVALUACION1</title>
+</head>
+<body>
+    <center><h1>MAPA DEL TESORO</h1></center>
+
+</body>
+</html>
+
+<script>
+
+function salto_de_lineas(){
+            document.write("<br>")
+            document.write("<br>")
+            document.write("<br>")
+        }
+
+function mostrarMensaje(mensaje) {
+    document.write(mensaje);
+    salto_de_lineas();
+}
+
+ 
+// generar una matriz de 5x5 
+var tabla= [];
+for (var i = 0; i < 5; i++) {
+    tabla[i] = [];
+    for (var j = 0; j < 5; j++) {
+        tabla[i][j] = 0; 
+    }
+}
+
+// generar posiciones aleatorias para el tesoro 
+var fila = Math.floor(Math.random() * 5);
+var columna = Math.floor(Math.random() * 5);
+
+//numero de intentos
+var intentos = 3;
+var contador = 1;
+
+// Bucle principal del juego
+while (contador <= intentos) {
+    // Jugador adivinara la posicion del tesoro
+    var fila_ab = parseInt(prompt("Adivina la fila (0-4):"));
+    var columna_ab = parseInt(prompt("Adivina la columna (0-4):"));
+
+    // verificar si la posición es la del tesoro
+    if (fila_ab == fila && columna_ab == columna) {
+        // mostrar mensaje cuando se gane el juego
+        mostrarMensaje("Encontraste el tesoro en el intento " + contador + " en la fila " + fila + " y columna " + columna);
+        break;
+    } else {
+        // mostrar mensaje de error si la posición no es la del tesoro
+        mostrarMensaje("Intento " + contador + ": El tesoro no se encontraba en la fila " + fila_ab + " y columna " + columna_ab);
+    }
+
+    
+    contador++;
+}
+
+// Si el jugador agotó los intentos mostrar la posición correcta del tesoro
+if (contador > intentos) {
+    mostrarMensaje("El tesoro estaba en la fila " + fila + " y columna " + columna);
+}
+
+mostrarMensaje("Fin del juego");
+
+
+
+
+</script>
